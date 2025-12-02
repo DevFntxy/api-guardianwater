@@ -1,0 +1,25 @@
+{
+  "name": "api-guardianwater",
+  "version": "1.0.0",
+  "description": "Api Rest para backend del proyecto guardianwater",
+  "homepage": "https://github.com/DevFntxy/api-guardianwater#readme",
+  "bugs": {
+    "url": "https://github.com/DevFntxy/api-guardianwater/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevFntxy/api-guardianwater.git"
+  },
+  "license": "ISC",
+  "author": "Derek Sesni Carreño (SesniDev)",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "servidor": "nodemon index.js"
+  },
+  "dependencies": {
+    "d": "^1.0.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
