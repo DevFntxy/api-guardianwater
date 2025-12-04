@@ -22,7 +22,7 @@ class UserController {
 
     async getUser(req, res) {
         try {
-            const user = await userDAO.findById(req.params.id);
+            const user = await userDAO.findById(req.params.id_user);
             if (!user) return res.status(404).json({ error: "User not found" });
             res.json(user);
         } catch (error) {
@@ -32,7 +32,7 @@ class UserController {
 
     async updateUser(req, res) {
         try {
-            const user = await userDAO.update(req.params.id, req.body);
+            const user = await userDAO.update(req.params.id_user, req.body);
             res.json(user);
         } catch (error) {
             res.status(400).json({ error: error.message });
@@ -41,7 +41,7 @@ class UserController {
 
     async deleteUser(req, res) {
         try {
-            await userDAO.delete(req.params.id);
+            await userDAO.delete(req.params.id_user);
             res.json({ message: "User deleted" });
         } catch (error) {
             res.status(500).json({ error: error.message });

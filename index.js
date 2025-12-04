@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 
+import usersRoutes from "./src/routes/users.routes.js";
 
 import { connectDB} from "./src/config/database.js";
 
@@ -19,7 +20,9 @@ app.use(morgan("dev"));
 //Conexion a la base de datos
 connectDB();
 
+//  Rutas
 
+app.use("/guardianwater/users", usersRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hola soy el inicio");

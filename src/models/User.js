@@ -1,4 +1,3 @@
-import { Model, Schema, Types } from "mongoose"; 
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
@@ -67,4 +66,7 @@ const userSchema = new Schema({
 
 });
 
-export default model('User', userSchema);
+// Necesario para búsquedas por distancia
+userSchema.index({ location: "2dsphere" });
+
+export default model("User", userSchema);
