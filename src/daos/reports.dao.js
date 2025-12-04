@@ -10,17 +10,16 @@ class ReportsDAO {
         return await Report.find();
     }
 
-    async findById(id) {
-        return await Report.findById(id);
+    async findById(id_report) {
+        return await Report.findOne({ id_report });
     }
-
-    async update(id, data) {
+    async update(id_report, data) {
         data.dateUpdate = Date.now();
-        return await Report.findByIdAndUpdate(id, data, { new: true });
+        return await Report.findOneAndUpdate( { id_report: id_report },data,{ new: true });
     }
 
-    async delete(id) {
-        return await Report.findByIdAndDelete(id);
+    async delete(id_report) {
+        return await Report.findOneAndDelete(id_report);
     }
 }
 

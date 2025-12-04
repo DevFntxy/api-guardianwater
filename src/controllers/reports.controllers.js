@@ -5,12 +5,12 @@ class ReportsController {
 
     async createReport(req, res) {
         try {
-            const { id_user } = req.body;
-
+            
             // Validar usuario existente
-            const userExists = await User.findOne({ id_user });
-            if (!userExists)
+            const user = await User.findOne({ id_user: req.body.user });
+            if (!user)
                 return res.status(404).json({ error: "User does not exist" });
+                
 
             const report = await reportsDAO.create(req.body);
             res.status(201).json(report);
@@ -31,7 +31,8 @@ class ReportsController {
 
     async getReport(req, res) {
         try {
-            const report = await reportsDAO.findById(req.params.id);
+            const report = await reportsDAO.findById(req.params.id_report);
+             
             if (!report) return res.status(404).json({ error: "Report not found" });
             res.json(report);
         } catch (error) {
@@ -41,7 +42,7 @@ class ReportsController {
 
     async updateReport(req, res) {
         try {
-            const report = await reportsDAO.update(req.params.id, req.body);
+            const report = await reportsDAO.update(req.params.id_report, req.body);
             res.json(report);
         } catch (error) {
             res.status(400).json({ error: error.message });
@@ -50,7 +51,7 @@ class ReportsController {
 
     async deleteReport(req, res) {
         try {
-            await reportsDAO.delete(req.params.id);
+            await reportsDAO.delete(req.params.id_report);
             res.json({ message: "Report deleted" });
         } catch (error) {
             res.status(500).json({ error: error.message });

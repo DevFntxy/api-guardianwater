@@ -54,7 +54,5 @@ const userSchema = new Schema({
 
 });
 
-// Necesario para búsquedas por distancia
-userSchema.index({ location: "2dsphere" });
 
 export default model("User", userSchema);

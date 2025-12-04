@@ -4,7 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 
 import usersRoutes from "./src/routes/users.routes.js";
-
+import reportsRoutes from "./src/routes/reports.routes.js";
 import { connectDB} from "./src/config/database.js";
 
 dotenv.config();
@@ -23,7 +23,7 @@ connectDB();
 //  Rutas
 
 app.use("/guardianwater/users", usersRoutes);
-
+app.use("/guardianwater/reports", reportsRoutes);
 app.get("/", (req, res) => {
   res.send("Hola soy el inicio");
 });
