@@ -42,6 +42,18 @@ const reportSchema = new Schema({
     image: {
         type: String, // URL o path de la imagen
         required: false
+    },
+        // Coordenadas de geolocalización
+    location: {
+        type: {
+            type: String,
+            enum: ["Point"],
+            default: "Point"
+        },
+        coordinates: {
+            type: [Number],  // [longitud, latitud]
+            default: [0, 0]
+        }
     }
 
 });
