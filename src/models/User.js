@@ -51,22 +51,8 @@ const userSchema = new Schema({
         postalCode: { type: String }
     },
 
-    // Coordenadas de geolocalización
-    location: {
-        type: {
-            type: String,
-            enum: ["Point"],
-            default: "Point"
-        },
-        coordinates: {
-            type: [Number],  // [longitud, latitud]
-            default: [0, 0]
-        }
-    }
 
 });
 
-// Necesario para búsquedas por distancia
-userSchema.index({ location: "2dsphere" });
 
 export default model("User", userSchema);
